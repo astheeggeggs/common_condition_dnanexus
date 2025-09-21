@@ -1,9 +1,9 @@
 dx build -f iterative-conditioning
 
-# input="plink"
+input="vcf"
 
-for anc in afr amr eas eur sas; do
-    for chr in {1..22} X; do
+for anc in sas; do #afr amr eas eur sas; do
+    for chr in 11 X; do #{1..22} X; do
         echo "${chr}..."
         anc_upper=$(echo "$anc" | awk '{print toupper($0)}')
         # DIRs
@@ -53,7 +53,7 @@ for anc in afr amr eas eur sas; do
                     --name "iterative_conditioning_${anc}_${chr}"
         else
             echo ${input}
-            dx run final-group-tests \
+            dx run iterative-conditioning \
                     -i PLINK_BIM="/Barney/wes/sample_filtered/ukb_wes_450k.qced.chr${chr}.bim" \
                     -i PLINK_BED="/Barney/wes/sample_filtered/ukb_wes_450k.qced.chr${chr}.bed" \
                     -i PLINK_FAM="/Barney/wes/sample_filtered/ukb_wes_450k.qced.chr${chr}.fam" \
@@ -64,7 +64,7 @@ for anc in afr amr eas eur sas; do
                     -i ANC=${anc} \
                     -i CHR=${chr} \
                     --instance-type "mem2_ssd2_v2_x4" --priority high \
-                    --destination /brava/duncan/outputs/final-group-tests-plink/${anc_upper}/ -y \
+                    --destination /brava/duncan/outputs/iterative-conditioning-plink/${anc_upper}/ -y \
                     --name "iterative_conditioning_${anc}_${chr}"
         fi
     done

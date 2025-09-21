@@ -1,9 +1,9 @@
 # dx build -f final-group-tests
 
-# input="plink"
+input="plink"
 
-for anc in afr amr eas eur sas; do
-    for chr in {1..22} X; do
+for anc in sas; do
+    for chr in 11; do
         echo "${chr}..."
         anc_upper=$(echo "$anc" | awk '{print toupper($0)}')
         # DIRs
