@@ -116,12 +116,14 @@ main() {
     mkdir common_condition/${DATA_DIR}
     mv in/* common_condition/${DATA_DIR}/
 
-    docker pull gcr.io/weighty-elf-452116-c7/brava-common-check:v4
+    docker pull astheeggeggs/brava-common-check:v4
+    # sleep infinity
     docker run \
       -v $(pwd)/common_condition:/common_condition \
       -w /common_condition \
       --env ANC=${ANC} \
       --env CHR=chr${CHR} \
+      --env P_T=${P_T} \
       --env DATA_DIR=snakemake_${ANC} \
       gcr.io/weighty-elf-452116-c7/brava-common-check:v4 \
       bash /common_condition/run_step1_iterative_conditioning_uk-biobank_dnanexus_applet.sh

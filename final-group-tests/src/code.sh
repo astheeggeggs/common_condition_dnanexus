@@ -116,8 +116,7 @@ main() {
     mkdir common_condition/${DATA_DIR}
     mv in/* common_condition/${DATA_DIR}/
 
-    docker pull gcr.io/weighty-elf-452116-c7/brava-common-check:v4
-    sleep infinity
+    docker pull pull astheeggeggs/brava-common-check:v4
     docker run \
       -v $(pwd)/common_condition:/common_condition \
       -w /common_condition \

@@ -106,6 +106,12 @@
       "help": "",
       "class": "string",
       "optional": false
+    },
+    {
+      "name": "P_T",
+      "help": "",
+      "class": "float",
+      "optional": false
     }
   ],
   "outputSpec": [

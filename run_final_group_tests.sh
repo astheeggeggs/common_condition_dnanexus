@@ -1,4 +1,4 @@
-# dx build -f final-group-tests
+dx build -f final-group-tests
 
 input="plink"
 
@@ -48,9 +48,9 @@ for anc in sas; do
                     -f json/file_paths_${anc}_chr${chr}.json \
                     -i ANC=${anc} \
                     -i CHR=${chr} \
-                    --instance-type "mem2_ssd1_v2_x8" --priority high \
-                    --destination /brava/duncan/outputs/iterative-conditioning/${anc_upper}/ -y \
-                    --name "iterative_conditioning_${anc}_${chr}"
+                    --instance-type "mem2_ssd1_v2_x4" --priority high \
+                    --destination /brava/duncan/outputs/final-group-tests-vcf/${anc_upper}/ -y \
+                    --name "final-group-tests-vcf_${anc}_${chr}"
         else
             echo ${input}
             dx run final-group-tests \
@@ -63,7 +63,7 @@ for anc in sas; do
                     -f json/file_paths_${anc}_chr${chr}.json \
                     -i ANC=${anc} \
                     -i CHR=${chr} \
-                    --instance-type "mem2_ssd2_v2_x4" --ssh --priority high \
+                    --instance-type "mem2_ssd2_v2_x4" --priority high \
                     --destination /brava/duncan/outputs/final-group-tests-plink/${anc_upper}/ -y \
                     --name "final-group-tests-plink_${anc}_${chr}"
         fi
