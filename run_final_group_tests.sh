@@ -2,8 +2,8 @@ dx build -f final-group-tests
 
 input="plink"
 
-for anc in sas; do
-    for chr in 11; do
+for anc in eur; do
+    for chr in 13; do
         echo "${chr}..."
         anc_upper=$(echo "$anc" | awk '{print toupper($0)}')
         # DIRs
@@ -59,7 +59,7 @@ for anc in sas; do
                     -i PLINK_FAM="/Barney/wes/sample_filtered/ukb_wes_450k.qced.chr${chr}.fam" \
                     -i SPARSE_MATRIX="/brava/inputs/GRM_autosomes/brava_${anc_upper}_relatednessCutoff_0.05_5000_randomMarkersUsed.sparseGRM.mtx" \
                     -i SPARSE_MATRIX_IDs="/brava/inputs/GRM_autosomes/brava_${anc_upper}_relatednessCutoff_0.05_5000_randomMarkersUsed.sparseGRM.mtx.sampleIDs.txt" \
-                    -i GENE_TRAIT_PAIRS_TO_TEST="brava/duncan/gene_phenotype_pairs_with_conditioning_variants_${anc_upper}.tsv.gz" \
+                    -i GENE_TRAIT_PAIRS_TO_TEST="brava/duncan/gene_phenotype_pairs_with_conditioning_variants_${anc_upper}.tsv" \
                     -f json/file_paths_${anc}_chr${chr}.json \
                     -i ANC=${anc} \
                     -i CHR=${chr} \

@@ -125,7 +125,7 @@ main() {
       --env CHR=chr${CHR} \
       --env P_T=${P_T} \
       --env DATA_DIR=snakemake_${ANC} \
-      gcr.io/weighty-elf-452116-c7/brava-common-check:v4 \
+      astheeggeggs/brava-common-check:v4 \
       bash /common_condition/run_step1_iterative_conditioning_uk-biobank_dnanexus_applet.sh
     
     mkdir -p ~/out/run_files/chr${CHR} ~/out/saige_outputs/chr${CHR} ~/out/combined_outputs
