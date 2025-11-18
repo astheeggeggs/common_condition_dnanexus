@@ -2,9 +2,9 @@ dx build -f iterative-conditioning
 
 input="plink"
 
-for p in 0.01 0.001 0.0001; do
-    for anc in eur; do
-        for chr in 1 2; do
+for p in 0.001 0.00001; do
+    for anc in afr sas; do
+        for chr in 19; do
             echo "${chr}..."
             anc_upper=$(echo "$anc" | awk '{print toupper($0)}')
             # DIRs
@@ -12,7 +12,9 @@ for p in 0.01 0.001 0.0001; do
             variance_dir="Isaac/common_condition/"
             group_dir="/brava/inputs/annotations/v7/"
             # gene_trait_pairs="/Isaac/common_condition/gene_phenotype_pairs_290525.csv"
-            gene_trait_pairs="/Isaac/common_condition/new_october_gene_phenotype_pairs.csv"
+            # gene_trait_pairs="/Isaac/common_condition/gene_phenotype_pairs_101025.csv"
+            gene_trait_pairs="/Isaac/common_condition/gene_phenotype_pairs_051125.csv"
+            # gene_trait_pairs="/Isaac/common_condition/debugging.csv"
 
             if [ ! -f "json/file_paths_${anc}_chr${chr}.json" ]; then
                 
@@ -69,7 +71,7 @@ for p in 0.01 0.001 0.0001; do
                         -i CHR=${chr} \
                         -i P_T=${p} \
                         --instance-type "mem2_ssd2_v2_x8" --priority high \
-                        --destination /brava/duncan/outputs/iterative-conditioning-plink/${anc_upper}_${p}/ -y \
+                        --destination /brava/duncan/outputs/iterative-conditioning-plink-nov25/${anc_upper}_${p}/ -y \
                         --name "iterative_conditioning_${anc}_${chr}"
             fi
         done

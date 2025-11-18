@@ -130,8 +130,18 @@ main() {
 
     mv common_condition/*.log ~/out/final_run_files/chr${CHR}/
     mv common_condition/logs ~/out/final_run_files/chr${CHR}/
-    mv common_condition/final_run_files/* ~/out/final_run_files/chr${CHR}/
-    mv common_condition/final_saige_outputs/* ~/out/final_saige_outputs/chr${CHR}/
+
+    if [[ -d "common_condition/final_run_files" && "$(ls -A common_condition/final_run_files)" ]]; then
+        mv common_condition/final_run_files/* ~/out/final_run_files/chr${CHR}/
+    else
+        touch ~/out/final_run_files/chr${CHR}/placeholder.txt
+    fi
+    if [[ -d "common_condition/final_saige_outputs" && "$(ls -A common_condition/final_saige_outputs)" ]]; then
+        mv common_condition/final_saige_outputs/* ~/out/final_saige_outputs/chr${CHR}/
+    else
+        touch ~/out/final_saige_outputs/chr${CHR}/placeholder.txt
+    fi
+
     mv common_condition/brava_final_conditional_analysis_results.txt ~/out/final_combined_outputs/brava_${ANC}_chr${CHR}_final_conditional_analysis_results.txt
     mv common_condition/brava_final_conditional_analysis_results.txt.singleAssoc.txt ~/out/final_combined_outputs/brava_${ANC}_chr${CHR}_final_conditional_analysis_results.txt.singleAssoc.txt
 
